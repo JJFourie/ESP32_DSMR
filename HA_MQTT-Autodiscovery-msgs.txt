@@ -1,0 +1,51 @@
+
+===========================================================================================================================================
+
+>>>>>> DSMR Reader <<<<<<
+-------------------------
+
+MQTT messages to create the device and related sensor entities in Home Assistant, using HA MQTT auto-discovery.
+Below each create statement is also a statement to delete the created sensor in HA.
+
+Execute the commands from the Mosquitto container command prompt e.g. using Portainer.
+Else use e.g. MQTT Explorer to publish the topic (-t) and payload (-m).
+
+
+
+-- Create ESP32 "DSMR Reader" Device + "Actual Consumption" sensor.  
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/ActualConsumption/config" -m '{"name":"Energy Actual Consumption", "unique_id": "DSMR_PAC", "state_class": "measurement", "device_class": "energy", "unit_of_measurement": "Wh", "state_topic": "dsmr/sensors/actual_consumption", "device": {"identifiers": ["DSM_READER"], "name": "DSMR Reader", "model": "KFM5KAIFA", "manufacturer": "Kaifa"} }'
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/ActualConsumption/config" -n
+
+-- Create "Actual Consumption" sensor (and add to DSMR device)  # Already added when created device above.
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/ActualConsumption/config" -m '{"name": "Energy Actual Consumption", "unique_id": "DSMR_PAC", "state_class": "measurement", "device_class": "energy", "unit_of_measurement": "Wh", "state_topic": "dsmr/sensors/actual_consumption", "device": {"identifiers": ["DSM_READER"], "name": "DSMR Reader"}}'
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/ActualConsumption/config" -n
+
+
+-- Create "Actual Produced" sensor (and add to DSMR device).
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/ActualProduction/config" -m '{"name": "Energy Actual Production", "unique_id": "DSMR_PAP", "state_class": "measurement", "device_class": "energy", "unit_of_measurement": "Wh", "state_topic": "dsmr/sensors/actual_produced", "device": {"identifiers": ["DSM_READER"], "name": "DSMR Reader"}}'
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/ActualProduction/config" -n
+
+-- Create "Produced Tarif-1" sensor (and add to DSMR device).
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/ProductionTarif1/config" -m '{"name": "EnergyProduced_Tarif1_Total", "unique_id": "DSMR_ProdT1", "state_class": "total_increasing", "device_class": "energy", "unit_of_measurement": "kWh", "state_topic": "dsmr/sensors/produced_tarif_1", "device": {"identifiers": ["DSM_READER"], "name": "DSMR Reader"}}'
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/ProductionTarif1/config" -n
+
+-- Create "Produced Tarif-2" sensor (and add to DSMR device).
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/ProductionTarif2/config" -m '{"name": "EnergyProduced_Tarif2_Total", "unique_id": "DSMR_ProdT2", "state_class": "total_increasing", "device_class": "energy", "unit_of_measurement": "kWh", "state_topic": "dsmr/sensors/produced_tarif_2", "device": {"identifiers": ["DSM_READER"], "name": "DSMR Reader"}}'
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/ProductionTarif2/config" -n
+
+-- Create "Consumed Tarif-1" sensor (and add to DSMR device).
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/ConsumedTarif1/config" -m '{"name": "EnergyConsumed_Tarif1_Total", "unique_id": "DSMR_ConsT1", "state_class": "total_increasing", "device_class": "energy", "unit_of_measurement": "kWh", "state_topic": "dsmr/sensors/consumption_tarif_1", "device": {"identifiers": ["DSM_READER"], "name": "DSMR Reader"}}'
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/ConsumedTarif1/config" -n
+
+-- Create "Consumed Tarif-2" sensor (and add to DSMR device).
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/ConsumedTarif2/config" -m '{"name": "EnergyConsumed_Tarif2_Total", "unique_id": "DSMR_ConsT2", "state_class": "total_increasing", "device_class": "energy", "unit_of_measurement": "kWh", "state_topic": "dsmr/sensors/consumption_tarif_2", "device": {"identifiers": ["DSM_READER"], "name": "DSMR Reader"}}'
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/ConsumedTarif2/config" -n
+
+-- Create "Gas Consumed" sensor (and add to DSMR device).
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/GasConsumed/config" -m '{"name": "GasConsumed_Total", "unique_id": "DSMR_GasConsumed", "state_class": "total_increasing", "device_class": "energy", "unit_of_measurement": "m³", "state_topic": "dsmr/sensors/gas_meter_m3", "device": {"identifiers": ["DSM_READER"], "name": "DSMR Reader"}}'
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/GasConsumed/config" -n
+
+-- Create "Tarif Group" sensor (and add to DSMR device).
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/TarifGroup/config" -m '{"name": "Tarif Group", "unique_id": "DSMR_TG", "state_class": "measurement", "state_topic": "dsmr/sensors/actual_tarif_group", "device": {"identifiers": ["DSM_READER"], "name": "DSMR Reader"}}'
+mosquitto_pub -h 192.168.2.200 -r -t "homeassistant/sensor/TarifGroup/config" -n
+
