@@ -1,0 +1,150 @@
+
+-- Kaifa Telegram Definition
+
+/KFM5KAIFA-METER
+
+1-3:0.2.8(42)													Version information for P1 output
+0-0:1.0.0(180605091333S)										Date-time stamp of the P1 message
+0-0:96.1.1(4530303236303030303133343837363135)					Equipment identifier
+1-0:1.8.1(001790.476*kWh)										Electricity delivered TO client (Tariff 1) in 0,001 kWh
+1-0:1.8.2(002320.188*kWh)										Electricity delivered TO client (Tariff 2) in 0,001 kWh
+1-0:2.8.1(000000.000*kWh)										Electricity delivered BY client (Tariff 1) in 0,001 kWh
+1-0:2.8.2(000000.000*kWh)										Electricity delivered BY client (Tariff 2) in 0,001 kWh
+0-0:96.14.0(0002)												Tariff indicator electricity. The tariff indicator can also be used to switch tariff dependent loads e.g.boilers
+1-0:1.7.0(00.258*kW)											Actual electricity power delivered (+P) in 1 Watt resolution
+1-0:2.7.0(00.000*kW)											Actual electricity power received (-P) in 1 Watt resolution
+0-0:96.7.21(00010)												Number of power failures in any phase
+0-0:96.7.9(00004)												Number of long power failures in any phase
+1-0:99.97.0(1)(0-0:96.7.19)(000101000011W)(2147483647*s)		Power Failure Event Log (long power failures)
+1-0:32.32.0(00000)												Number of voltage sags in phase L1
+1-0:52.32.0(00000)												Number of voltage sags in phase L2 (polyphase meters only)
+1-0:72.32.0(00000)												Number of voltage sags in phase L3 (polyphase meters only)
+1-0:32.36.0(00000)												Number of voltage swells in phase L1
+1-0:52.36.0(00000)												Number of voltage swells in phase L2 (polyphase meters only)
+1-0:72.36.0(00000)												Number of voltage swells in phase L3 (polyphase meters only)
+0-0:96.13.1()													Text message codes: numeric 8 digits
+0-0:96.13.0()													Text message max 1024 characters.
+1-0:31.7.0(000*A)												Instantaneous current L1
+1-0:51.7.0(000*A)												Instantaneous current L2
+1-0:71.7.0(000*A)												Instantaneous current L3
+1-0:32.7.0(000*V) 		??										Instantaneous voltage L1  ??
+1-0:52.7.0(000*V) 		??										Instantaneous voltage L2  ??
+1-0:72.7.0(000*V) 		??										Instantaneous voltage L3  ??
+1-0:21.7.0(00.125*kW)											Instantaneous active power L1 (+P)
+1-0:22.7.0(00.000*kW)											Instantaneous active power L1 (-P)
+1-0:41.7.0(00.124*kW)											Instantaneous active power L2 (+P)
+1-0:42.7.0(00.000*kW)											Instantaneous active power L2 (-P)
+1-0:61.7.0(00.009*kW)											Instantaneous active power L3 (+P)
+1-0:62.7.0(00.000*kW)											Instantaneous active power L3 (-P)
+0-1:24.1.0(003)													(Gas) Device-Type (channel)
+0-1:96.1.0(4730303235303033333436333738353136)					(Gas) Equipment identifier 
+0-1:24.2.1(180605090000S)(05225.708*m3)							(Gas) Last hourly (or 5-minute?) value (temperature converted), gas delivered to client in m3, including decimal values and capture time
+!F7F2															
+
+
+-- My Telegram Integrations
+sensors/power/p1meter/received_tarif_1
+sensors/power/p1meter/received_tarif_2
+sensors/power/p1meter/actual_consumption
+sensors/power/p1meter/actual_received
+sensors/power/p1meter/instant_power_return_l1
+sensors/power/p1meter/instant_power_return_l2
+sensors/power/p1meter/instant_power_return_l3
+sensors/power/p1meter/instant_power_current_l1
+sensors/power/p1meter/instant_power_current_l2
+sensors/power/p1meter/instant_power_current_l3
+sensors/power/p1meter/instant_voltage_l1
+sensors/power/p1meter/instant_voltage_l2
+sensors/power/p1meter/instant_voltage_l3
+sensors/power/p1meter/actual_tarif_group
+sensors/power/p1meter/
+sensors/power/p1meter/
+sensors/power/p1meter/
+sensors/power/p1meter/
+sensors/power/p1meter/gas_meter_m3
+
+
+
+-- Debug Output
+
+/KFM5KAIFA-METER
+
+1-3:0.2.8(42)
+0-0:1.0.0(220418200220S)
+0-0:96.1.1(4530303033303030303038343133323134)
+1-0:1.8.1(004576.586*kWh)
+1-0:1.8.2(004282.105*kWh)
+1-0:2.8.1(001449.452*kWh)
+1-0:2.8.2(003258.397*kWh)
+0-0:96.14.0(0001)
+1-0:1.7.0(00.114*kW)/KFM5KAIFA-METER
+
+1-3:0.2.8(42)
+0-0:1.0.0(220418200319S)
+0-0:96.1.1(4530303033303030303038343133323134)
+1-0:1.8.1(004576.589*kWh)
+1-0:1.8.2(004282.105*kWh)
+1-0:2.8.1(001449.452*kWh)
+1-0:2.8.2(003258.397*kWh)
+0-0:96.14.0(0001)
+1-0:1.7.0(00.237*kW)
+1-0:2.7.0(00.000*kW)
+0-0:96.7.21(00016)
+0-0:96.7.9(00008)
+1-0:99.97.0(3)(0-0:96.7.19)(171215160515W)(0000010612*s)(171207094401W)(0045932662*s)(000101000017W)(2147483647*s)
+1-0:32.32.0(00000)
+1-0:52.32.0(00000)
+1-0:72.32.0(00000)
+1-0:32.36.0(00000)
+1-0:52.36.0(00000)
+1-0:72.36.0(00000)
+0-0:96.13.1()
+0-0:96.13.0()
+1-0:31.7.0(000*A)
+1-0:51.7.0(000*A)
+1-0:71.7.0(001*A)
+1-0:21.7.0(00.000*kW)
+1-0:22.7.0(00.000*kW)
+1-0:41.7.0(00.009*kW)
+1-0:42.7.0(00.000*kW)
+1-0:61.7.0(00.229*kW)
+1-0:62.7.0(00.000*kW)
+0-1:24.1.0(003)
+0-1:96.1.0(4730303032333430323032393135393135)
+0-1:24.2.1(220418190000S)(03562.851*m3)
+!5ABF
+Sending: consumption_tarif_1 value: 4576589
+Sending: consumption_tarif_2 value: 4282105
+Sending: produced_tarif_1 value: 1449452
+Sending: produced_tarif_2 value: 3258397
+Sending: actual_consumption value: 237
+Sending: actual_produced value: 0
+Sending: instant_power_usage_l1 value: 0
+Sending: instant_power_usage_l2 value: 9
+Sending: instant_power_usage_l3 value: 229
+Sending: instant_power_return_l1 value: 0
+Sending: instant_power_return_l2 value: 0
+Sending: instant_power_return_l3 value: 0
+Sending: instant_power_current_l1 value: 0
+Sending: instant_power_current_l2 value: 0
+Sending: instant_power_current_l3 value: 1000
+Sending: actual_tarif_group value: 1
+Sending: gas_meter_m3 value: 3562851
+1-0:1.8.1 : consumption_tarif_1 : 4576589
+1-0:1.8.2 : consumption_tarif_2 : 4282105
+1-0:2.8.1 : produced_tarif_1 : 1449452
+1-0:2.8.2 : produced_tarif_2 : 3258397
+1-0:1.7.0 : actual_consumption : 237
+1-0:2.7.0 : actual_produced : 0
+1-0:21.7.0 : instant_power_usage_l1 : 0
+1-0:41.7.0 : instant_power_usage_l2 : 9
+1-0:61.7.0 : instant_power_usage_l3 : 229
+1-0:22.7.0 : instant_power_return_l1 : 0
+1-0:42.7.0 : instant_power_return_l2 : 0
+1-0:62.7.0 : instant_power_return_l3 : 0
+1-0:31.7.0 : instant_power_current_l1 : 0
+1-0:51.7.0 : instant_power_current_l2 : 0
+1-0:71.7.0 : instant_power_current_l3 : 1000
+0-0:96.14.0 : actual_tarif_group : 1
+0-1:24.2.1 : gas_meter_m3 : 3562851
+
